@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ebs-app
+spec:
+  containers:
+  - name: app-container
+    image: myapp:latest
+    volumeMounts:
+    - mountPathL "/data"
+      name: ebs-storage
+    volumes:
+    - name: ebs-storage
+      persistentVolumeClaim:
+        claimName: pvc-aws-ebs
